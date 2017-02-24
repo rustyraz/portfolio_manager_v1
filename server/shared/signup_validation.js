@@ -4,9 +4,6 @@ import _ from 'lodash';
 export default function validateInput(data){
   let errors = {};
 
-  // if(_.isUndefined(data.name) || _.isNull(data.name)){
-  //   errors.name = 'Name is required';
-  // }
   if(_.isUndefined(data.email) || _.isNull(data.email)){
     errors.email = "Email is required";
   }
