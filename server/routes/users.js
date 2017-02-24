@@ -1,41 +1,10 @@
 import { Router } from 'express';
-import validator from 'validator';
-import _ from 'lodash';
+import validateInput from '../shared/signup_validation';
+import bcrypt from 'bcrypt';
+
+import User from '../models/user';
 
 let router = Router();
-
-function validateInput(data){
-  let errors = {};
-
-  if(_.isUndefined(data.name) || _.isNull(data.name)){
-    errors.name = 'Name is required';
-  }
-  if(_.isUndefined(data.email) || _.isNull(data.email)){
-    errors.email = "Email is required";
-  }
-  if(!_.isUndefined(data.email) && !_.isUndefined(data.email)){
-    if(!validator.isEmail(data.email)){
-      errors.email = "Email is invalid";
-    }
-  }
-  if(_.isUndefined(data.password) || _.isNull(data.password)){
-    errors.password = "Password is required";
-  }
-  if(_.isUndefined(data.confirmedPassword)){
-    errors.confirmedPassword = "Confirm Password is Required";
-  }
-
-  if(!_.isUndefined(data.password) && !_.isUndefined(data.confirmedPassword)){
-    if(!validator.equals(data.password, data.confirmedPassword)){
-      errors.confirmedPassword = "Passwords must match";
-    };
-  };
-
-  return {
-    errors,
-    isValid: _.isEmpty(errors)
-  }
-}
 
 router.post('/', (req,res) => {
 
@@ -44,28 +13,42 @@ router.post('/', (req,res) => {
   if(!isValid){
     res.status(400).json(errors);
   }else{
-    res.json({ success : true });
+    const {first_name, last_name, email, password} = req.body;
+    const password_digest = bcrypt.hashSync(password, 10);
+
+    User.forge({
+      first_name, last_name, email, password_digest
+    }, { hasTimestamps: true }).save()
+    .then(user => res.json({ success: true }))
+    .catch(err => res.status(500).json({ error: err }));
   }
 });
 
 router.get('/', (req,res) => {
+  
   let dummyData = {
-    name: "James Bond",
-    email: "example@gmail.com",
+    first_name: "James",
+    last_name: "Bond",
+    email: "james@bond.com",
     password: "123",
     confirmedPassword: "123"
-  };
+  }
 
   const { errors, isValid } = validateInput(dummyData);
 
   if(!isValid){
     res.status(400).json(errors);
   }else{
-    res.json({ success : true });
+    const {first_name, last_name, email, password} = dummyData;
+    const password_digest = bcrypt.hashSync(password, 10);
+
+    User.forge({
+      first_name, last_name, email, password_digest
+    }, { hasTimestamps: true }).save()
+    .then(user => res.json({ success: true }))
+    .catch(err => res.status(500).json({ error: err }));
   }
 
 });
-
-
 
 export default router;
