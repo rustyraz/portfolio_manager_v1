@@ -1,0 +1,41 @@
+{
+  "name": "portfolio_manager_v1",
+  "version": "1.0.0",
+  "description": "A smart way to manage your portfolio and generate resume",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "./node_modules/.bin/nodemon --watch server --exec babel-node -- server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rustyraz/portfolio_manager_v1.git"
+  },
+  "keywords": [
+    "Reactjs",
+    "Redux",
+    "Nodejs",
+    "Expressjs"
+  ],
+  "author": "Peter Ngerere",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rustyraz/portfolio_manager_v1/issues"
+  },
+  "homepage": "https://github.com/rustyraz/portfolio_manager_v1#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "validator": "^6.2.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "nodemon": "^1.11.0"
+  }
+}
