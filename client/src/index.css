@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  color: #2c3e50 !important;
+  padding-top: 70px;
+}
+.sidenav{
+  font-size: 1.5em;
+  align-content: center !important;
+  font-weight: bold;
+  text-align: center;
+}
+.sidenav a.list-group-item{
+  color: #bdc3c7;
+}
+.sidenav a.active, .navbar_{
+  color: #ffffff !important;
+  background: #c0392b !important;
+}
+
+.navbar-default_ a{
+  color: #ffffff !important;
+}
+
+.navbar-default_ .navbar-nav>li>a {
+  background-color: #ffffff !important;
+  color: #2c3e50 !important;
+}

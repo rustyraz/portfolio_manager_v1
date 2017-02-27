@@ -40,22 +40,28 @@ function validateInput(data, otherValidations){
 
 }
 
-router.post('/', (req,res) => {
+router.post('/register', (req,res) => {
+  res.json(req.body);
 
-  const { errors, isValid } = validateInput(req.body);
+  // validateInput(req.body, commonValidations).then(({errors, isValid}) => {
+  //   if(!isValid){
+  //     res.status(400).json(errors);
+  //   }else{
+  //     const {first_name, last_name, email, password} = dummyData;
+  //     const password_digest = bcrypt.hashSync(password, 10);
+  //
+  //     User.forge({
+  //       first_name, last_name, email, password_digest
+  //     }, { hasTimestamps: true }).save()
+  //     .then(user => res.json({ success: true }))
+  //     .catch(err => res.status(500).json({ error: err }));
+  //   }
+  // });
 
-  if(!isValid){
-    res.status(400).json(errors);
-  }else{
-    const {first_name, last_name, email, password} = req.body;
-    const password_digest = bcrypt.hashSync(password, 10);
+});
 
-    User.forge({
-      first_name, last_name, email, password_digest
-    }, { hasTimestamps: true }).save()
-    .then(user => res.json({ success: true }))
-    .catch(err => res.status(500).json({ error: err }));
-  }
+router.post('/login', (req,res) =>{
+  res.json({success: true})
 });
 
 router.get('/', (req,res) => {
