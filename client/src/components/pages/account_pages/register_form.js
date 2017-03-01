@@ -12,17 +12,38 @@ class RegisterForm extends React.Component{
       password: "",
       confirm_password: "",
       errors: {},
-      isLoading: false
+      isLoading: false,
+      isvalid: false
     }
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.checkUserExists = this.checkUserExists.bind(this);
   }
 
   onChange(e){
     this.setState({
       [e.target.name]: e.target.value
     });
+  }
+
+  checkUserExists(e){
+    const field = e.target.name;
+    const val = e.target.value;
+    if(val !== ''){
+      this.props.isUserExists(val).then((res) => {
+        let errors = this.state.errors;
+        let invalid;
+        if(res.data.users){
+          errors[field] = "There is another user registered with such " + field;
+          invalid = true;
+        }else{
+          errors[field] = '';
+          invalid = false;
+        }
+        this.setState({ errors, invalid});
+      });
+    }
   }
 
   isValid(){
@@ -57,7 +78,7 @@ class RegisterForm extends React.Component{
           type: 'success',
           text: 'Your registration was successful. Welcome!'
         });
-        this.context.router.push('/');
+        this.context.router.push('/profile');
       });
     }else{
       this.setState({ isLoading: false });
@@ -81,6 +102,7 @@ class RegisterForm extends React.Component{
                 label="Email"
                 onChange={this.onChange}
                 value={this.state.email}
+                checkUserExists={this.checkUserExists}
                 fieldName="email"
               />
 
@@ -104,7 +126,7 @@ class RegisterForm extends React.Component{
 
 
               <div className="form-group">
-                <button className="btn btn-danger" disabled={this.state.isLoading}>Register</button>
+                <button className="btn btn-danger" disabled={this.state.isLoading || this.state.invalid}>Register</button>
                 <hr/>
                 Already have an account? <NavLink activeClassName="active"  to="/login">Login here</NavLink>
               </div>
@@ -118,7 +140,8 @@ class RegisterForm extends React.Component{
 
 RegisterForm.propTypes = {
   userRegisterRequest: React.PropTypes.func.isRequired,
-  addFlashMessage: React.PropTypes.func.isRequired
+  addFlashMessage: React.PropTypes.func.isRequired,
+  isUserExists: React.PropTypes.func.isRequired
 }
 
 RegisterForm.contextTypes = {

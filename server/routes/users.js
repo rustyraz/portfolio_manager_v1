@@ -68,12 +68,12 @@ router.get('/:emailIdentifier',(req,res) => {
     select: ['first_name','last_name','email'],
     where: { email: req.params.emailIdentifier }
   }).fetch().then(user => {
-    let data = {};
+    let data = null;
     if(!isNull(user)){
       data = user.toJSON();
     }
 
-    res.json(data);
+    res.json({users: data});
   });
 });
 

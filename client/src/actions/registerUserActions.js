@@ -11,3 +11,9 @@ export function userRegisterRequest(userData){
     });
   }
 }
+
+export function isUserExists(identifier){
+  return dispatch => {
+    return axios.get(`${configs.API_SERVER_URL}user/${identifier}`);
+  }
+}
