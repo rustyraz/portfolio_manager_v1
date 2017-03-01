@@ -11,6 +11,7 @@ import LoginPage from './pages/account_pages/login';
 import RegisterPage from '../containers/RegisterPageContainer';
 
 import TemplatesPage from './pages/templates_page';
+import FlashMessages from './flash/flashMessagesList';
 
 import Navbar from './navbar';
 import '../index.css';
@@ -20,6 +21,7 @@ export default class Layout extends Component {
     return (
       <div className="container">
         <Navbar/>
+        <FlashMessages />
         <div className="row">
           <div className="col-sm-12 col-md-2">
             <div className="list-group sidenav">
@@ -32,7 +34,7 @@ export default class Layout extends Component {
               <NavLink className="list-group-item" activeClassName="active"  to="/templates"><span className="glyphicon glyphicon-duplicate" aria-hidden="true"></span><br/>Templates</NavLink>
             </div>
           </div>
-          <div className="col-sm-12 col-md-8">
+          <div className="col-sm-12 col-md-10">
             <Route exact path="/" component={HomePage} />
             <Route path="/profile" component={ProfilePage} />
             <Route path="/contacts" component={ContactsPage} />

@@ -27,3 +27,7 @@ body {
   background-color: #ffffff !important;
   color: #2c3e50 !important;
 }
+
+.jumbotron {
+  text-align: center !important;
+}
