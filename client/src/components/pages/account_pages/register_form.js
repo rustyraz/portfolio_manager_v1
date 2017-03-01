@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { REGISTER_INPUT_VALIDATOR } from '../../../lib/validator';
 import TextFieldGroup from '../../common/TextFieldGroup';
 
-
 class RegisterForm extends React.Component{
   constructor(props){
     super(props);
@@ -50,14 +49,13 @@ class RegisterForm extends React.Component{
           isLoading: false
         });
       })
-      .then((data) => console.log(data));
+      .then((data) => {
+        //redirect on success
+        this.context.router.push('/');
+      });
     }else{
       this.setState({ isLoading: false });
     }
-
-
-
-
 
   }
 
@@ -86,6 +84,7 @@ class RegisterForm extends React.Component{
                 onChange={this.onChange}
                 value={this.state.password}
                 fieldName="password"
+                type="password"
               />
 
               <TextFieldGroup
@@ -94,6 +93,7 @@ class RegisterForm extends React.Component{
                 onChange={this.onChange}
                 value={this.state.confirm_password}
                 fieldName="confirm_password"
+                type="password"
               />
 
 
@@ -112,6 +112,10 @@ class RegisterForm extends React.Component{
 
 RegisterForm.propTypes = {
   userRegisterRequest: React.PropTypes.func.isRequired
+}
+
+RegisterForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
 }
 
 export default RegisterForm;
