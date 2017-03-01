@@ -3,6 +3,7 @@ import commonValidations from '../shared/signup_validation';
 import bcrypt from 'bcrypt';
 //import Promise from 'bluebird';
 import isEmpty from 'lodash/isEmpty';
+import isNull from 'lodash/isNull';
 
 import User from '../models/user';
 
@@ -26,37 +27,26 @@ function validateInput(data, otherValidations){
       isValid: isEmpty(errors)
     };
   });
-
-  // return Promise.all([
-  //   User.where({ email: data.email }).fetch().then(user => {
-  //     if(user) { errors.email = "That email is already registered" }
-  //   })
-  // ]).then(() => {
-  //   return {
-  //     errors,
-  //     isValid: isEmpty(errors)
-  //   };
-  // });
-
 }
 
 router.post('/register', (req,res) => {
-  res.json(req.body);
 
-  // validateInput(req.body, commonValidations).then(({errors, isValid}) => {
-  //   if(!isValid){
-  //     res.status(400).json(errors);
-  //   }else{
-  //     const {first_name, last_name, email, password} = dummyData;
-  //     const password_digest = bcrypt.hashSync(password, 10);
-  //
-  //     User.forge({
-  //       first_name, last_name, email, password_digest
-  //     }, { hasTimestamps: true }).save()
-  //     .then(user => res.json({ success: true }))
-  //     .catch(err => res.status(500).json({ error: err }));
-  //   }
-  // });
+  validateInput(req.body, commonValidations).then(({errors, isValid}) => {
+    if(!isValid){
+      res.status(400).json(errors);
+    }else{
+      const { email, password} = req.body;
+      const password_digest = bcrypt.hashSync(password, 10);
+
+      User.forge({
+        email, password_digest
+      }, { hasTimestamps: true }).save()
+      .then(user => res.json({ success: true }))
+      .catch(err => res.status(500).json({ error: err }));
+    }
+  });
+  //setTimeout(()=>{},5000);
+
 
 });
 
@@ -65,40 +55,25 @@ router.post('/login', (req,res) =>{
 });
 
 router.get('/', (req,res) => {
-
-  let dummyData = {
-    first_name: "Michael",
-    last_name: "Bay",
-    email: "bay@movies.com",
-    password: "123",
-    confirmedPassword: "123"
-  }
-
-  validateInput(dummyData, commonValidations).then(({errors, isValid}) => {
-    if(!isValid){
-      res.status(400).json(errors);
-    }else{
-      const {first_name, last_name, email, password} = dummyData;
-      const password_digest = bcrypt.hashSync(password, 10);
-
-      User.forge({
-        first_name, last_name, email, password_digest
-      }, { hasTimestamps: true }).save()
-      .then(user => res.json({ success: true }))
-      .catch(err => res.status(500).json({ error: err }));
-    }
+  res.json({
+    success: true,
+    errors: false,
+    data:{}
   });
-
 
 });
 
-router.get('/:identifier',(req,res) => {
+router.get('/:emailIdentifier',(req,res) => {
   User.query({
     select: ['first_name','last_name','email'],
-    where: { email: req.params.identifier }
+    where: { email: req.params.emailIdentifier }
   }).fetch().then(user => {
-    let data = user.toJSON();
-    res.json(user);
+    let data = {};
+    if(!isNull(user)){
+      data = user.toJSON();
+    }
+
+    res.json(data);
   });
 });
 

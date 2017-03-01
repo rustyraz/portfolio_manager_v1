@@ -7,7 +7,8 @@ import ContactsPage from './pages/contacts_page';
 import RefereesPage from './pages/referees_page';
 import HomePage from './pages/home_page';
 import LoginPage from './pages/account_pages/login';
-import RegisterPage from './pages/account_pages/register_page';
+//import RegisterPage from './pages/account_pages/register_page';
+import RegisterPage from '../containers/RegisterPageContainer';
 
 import TemplatesPage from './pages/templates_page';
 

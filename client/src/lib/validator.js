@@ -1,7 +1,7 @@
 import validator from 'validator';
 import _ from 'lodash';
 
-export default function validateInput(data){
+export const REGISTER_INPUT_VALIDATOR = (data) => {
   let errors = {};
 
   if(_.isUndefined(data.email) || _.isNull(data.email)){
@@ -38,7 +38,7 @@ export default function validateInput(data){
       errors.confirm_password = "Passwords must match";
     };
   };
-  
+
   return {
     errors,
     isValid: _.isEmpty(errors)

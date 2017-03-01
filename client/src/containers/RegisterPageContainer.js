@@ -1,7 +1,7 @@
 import React from 'react';
-import RegisterForm from './register_form';
+import RegisterForm from '../components/pages/account_pages/register_form';
 import { connect } from 'react-redux';
-import { userRegisterRequest } from '../../../actions/registerUserActions';
+import { userRegisterRequest } from '../actions/registerUserActions';
 
 class RegisterPage extends React.Component {
   render(){
