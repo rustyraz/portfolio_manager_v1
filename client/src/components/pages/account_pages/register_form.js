@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { REGISTER_INPUT_VALIDATOR } from '../../../lib/validator';
 import TextFieldGroup from '../../common/TextFieldGroup';
+import shortid from 'shortid';
 
 class RegisterForm extends React.Component{
   constructor(props){
@@ -51,6 +52,11 @@ class RegisterForm extends React.Component{
       })
       .then((data) => {
         //redirect on success
+        this.props.addFlashMessage({
+          id: shortid.generate(), //used to distinguish the messages
+          type: 'success',
+          text: 'Your registration was successful. Welcome!'
+        });
         this.context.router.push('/');
       });
     }else{
@@ -111,7 +117,8 @@ class RegisterForm extends React.Component{
 }
 
 RegisterForm.propTypes = {
-  userRegisterRequest: React.PropTypes.func.isRequired
+  userRegisterRequest: React.PropTypes.func.isRequired,
+  addFlashMessage: React.PropTypes.func.isRequired
 }
 
 RegisterForm.contextTypes = {
