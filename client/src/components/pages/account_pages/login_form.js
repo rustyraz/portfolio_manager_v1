@@ -61,6 +61,8 @@ class LoginForm extends React.Component{
           <div className="panel-body">
             <form onSubmit={this.onSubmit}>
 
+              {errors.form && <div className="alert alert-danger">{errors.form}</div>}
+
               <TextFieldGroup
                 error={errors.email}
                 label="Email"

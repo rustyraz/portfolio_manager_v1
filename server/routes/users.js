@@ -47,13 +47,6 @@ router.post('/register', (req,res) => {
   });
   //setTimeout(()=>{},5000);
 
-
-});
-
-router.post('/login', (req,res) =>{
-  res.status(400).json({
-    errors: true
-  });
 });
 
 router.get('/', (req,res) => {

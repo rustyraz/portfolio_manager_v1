@@ -5,7 +5,7 @@ export function login(userData){
   return dispatch => {
     return axios({
       method: 'post',
-      url: `${configs.API_SERVER_URL}user/login`,
+      url: `${configs.API_SERVER_URL}auth`,
       data: userData
     });
   }
