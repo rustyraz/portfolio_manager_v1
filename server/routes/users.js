@@ -51,7 +51,9 @@ router.post('/register', (req,res) => {
 });
 
 router.post('/login', (req,res) =>{
-  res.json({success: true})
+  res.status(400).json({
+    errors: true
+  });
 });
 
 router.get('/', (req,res) => {
