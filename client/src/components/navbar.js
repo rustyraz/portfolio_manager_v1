@@ -1,8 +1,49 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../actions/authActions';
 
-export default class navbar extends React.Component {
+class navbar extends React.Component {
+
+  logout(e){
+    e.preventDefault();
+    this.props.logout();
+  }
+
   render(){
+
+    const { isAuthenticated } = this.props.auth;
+
+    const userLinks = (
+      <ul className="nav navbar-nav navbar-right">
+        <li className="dropdown">
+          <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span className="caret"></span></a>
+          <ul className="dropdown-menu">
+            <li>
+              <NavLink activeClassName="active"  to="/profile">Profile</NavLink>
+            </li>
+            <li>
+              <NavLink activeClassName="active"  to="/settings">Settings</NavLink>
+            </li>
+            <li role="separator" className="divider"></li>
+            <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    );
+
+    const guestLinks = (
+      <ul className="nav navbar-nav navbar-right">
+        <li>
+          <NavLink activeClassName="active"  to="/register">Register</NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active"  to="/login">Login</NavLink>
+        </li>
+      </ul>
+    );
+
+
     return (
       <nav className="navbar navbar-default navbar-fixed-top">
         <div className="container-fluid">
@@ -13,35 +54,27 @@ export default class navbar extends React.Component {
               <span className="icon-bar"></span>
               <span className="icon-bar"></span>
             </button>
-            <a className="navbar-brand" href="/">Portfolio Manager</a>
           </div>
 
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul className="nav navbar-nav">
-              <li className="active"><a href="/">Home <span className="sr-only">(current)</span></a></li>
-            </ul>
+            { isAuthenticated ? userLinks : guestLinks }
 
-            <ul className="nav navbar-nav navbar-right">
-              <li>
-                <NavLink activeClassName="active"  to="/register">Register</NavLink>
-              </li>
-              <li>
-                <NavLink activeClassName="active"  to="/login">Login</NavLink>
-              </li>
-
-              <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span className="caret"></span></a>
-                <ul className="dropdown-menu">
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Settings</a></li>
-                  <li role="separator" className="divider"></li>
-                  <li><a href="#">Logout</a></li>
-                </ul>
-              </li>
-            </ul>
           </div>
         </div>
       </nav>
     );
   }
 }
+
+navbar.propTypes = {
+  auth: React.PropTypes.object.isRequired,
+  logout: React.PropTypes.func.isRequired
+}
+
+function mapStateToProps(state){
+  return {
+    auth: state.auth
+  }
+}
+
+export default connect(mapStateToProps, { logout })(navbar);
