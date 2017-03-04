@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginForm from '../components/pages/account_pages/login_form';
 import { connect } from 'react-redux';
-import { login as loginActions } from '../actions/loginActions';
+import { login as loginActions } from '../actions/authActions';
 
 import { addFlashMessage } from '../actions/flashMessages';
 import topPageLogo from '../components/common/topPageLogo';

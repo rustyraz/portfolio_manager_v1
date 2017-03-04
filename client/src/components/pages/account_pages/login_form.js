@@ -2,7 +2,7 @@ import React from 'react';
 
 import { NavLink } from 'react-router-dom';
 import TextFieldGroup from '../../common/TextFieldGroup';
-import validateLoginInput from '../../../lib/login_validator';
+import validateLoginInput from '../../../utils/login_validator';
 
 class LoginForm extends React.Component{
   constructor(props){

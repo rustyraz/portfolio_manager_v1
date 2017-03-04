@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { REGISTER_INPUT_VALIDATOR } from '../../../lib/validator';
+import { REGISTER_INPUT_VALIDATOR } from '../../../utils/validator';
 import TextFieldGroup from '../../common/TextFieldGroup';
 import shortid from 'shortid';
 
