@@ -1,5 +1,4 @@
 import axios from 'axios';
-import configs from '../configs';
 import setAuthorizationToken from '../utils/setAuthorizationToken';
 import jwt_decode from 'jwt-decode';
 import { SET_CURRENT_USER } from '../constants/ActionTypes';
@@ -24,7 +23,7 @@ export function login(userData){
   return dispatch => {
     return axios({
       method: 'post',
-      url: `${configs.API_SERVER_URL}auth`,
+      url: `/auth`,
       data: userData
     }).then(res => {
       const token = res.data.token;

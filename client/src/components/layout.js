@@ -11,7 +11,7 @@ export default class Layout extends Component {
       <div className="container">
         <Navbar/>
         <FlashMessages />
-        
+
         <div className="row">
           { ComponentRoutes }
         </div>

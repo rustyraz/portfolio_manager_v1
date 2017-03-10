@@ -60,7 +60,7 @@ router.get('/', (req,res) => {
 
 router.get('/:emailIdentifier',(req,res) => {
   User.query({
-    select: ['first_name','last_name','email'],
+    select: ['email'],
     where: { email: req.params.emailIdentifier }
   }).fetch().then(user => {
     let data = null;
