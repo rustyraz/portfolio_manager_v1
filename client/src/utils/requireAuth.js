@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addFlashMessage } from '../actions/flashMessages';
 
-export default function(ComposedComponent){
+export default function(ComposedComponent, guestRoute = null ){
     class Authenticate extends React.Component{
       //life cycle hook
       componentWillMount(){
         if(!this.props.isAuthenticated){
+          console.log('Not logged in and trying to access user page');
           this.props.addFlashMessage({
             type: 'error',
             text: 'You need to login to access this page'
