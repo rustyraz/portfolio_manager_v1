@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import commonValidations from '../shared/signup_validation';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 //import Promise from 'bluebird';
 import isEmpty from 'lodash/isEmpty';
 import isNull from 'lodash/isNull';
