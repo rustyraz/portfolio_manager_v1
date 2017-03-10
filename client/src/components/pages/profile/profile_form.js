@@ -34,7 +34,7 @@ class ProfileForm extends React.Component{
       <div>
       {sidebarMenu}
       <div className="col-sm-12 col-md-10">
-          <div className="panel panel-default">
+          <div className="panel panel-default z-depth-4">
             <div className="panel-heading"><h4>Your Profile Info</h4></div>
             <div className="panel-body">
               <form onSubmit={this.onSubmit}>

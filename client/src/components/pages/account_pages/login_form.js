@@ -56,7 +56,7 @@ class LoginForm extends React.Component{
   render(){
     const { errors, email, password, isLoading } = this.state;
     return (
-        <div className="panel panel-default">
+        <div className="panel panel-default z-depth-4">
           <div className="panel-heading"><h4>Login into account</h4></div>
           <div className="panel-body">
             <form onSubmit={this.onSubmit}>
@@ -82,7 +82,7 @@ class LoginForm extends React.Component{
               />
 
               <div className="form-group">
-                <button className="btn btn-danger btn-lg btn-block" disabled={isLoading}>Login</button>
+                <button className="btn btn-large btn-block" disabled={isLoading}>Login</button>
                 <hr/>
                 Don't have an account? <NavLink activeClassName="active"  to="/register">Register here</NavLink>
               </div>

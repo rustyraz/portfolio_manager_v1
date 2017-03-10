@@ -91,7 +91,7 @@ class RegisterForm extends React.Component{
     //grab the errors
     const { errors } = this.state;
     return (
-        <div className="panel panel-default">
+        <div className="panel panel-default z-depth-4">
           <div className="panel-heading"><h4>Account registration</h4></div>
           <div className="panel-body">
             <form onSubmit={this.onSubmit}>
@@ -124,7 +124,7 @@ class RegisterForm extends React.Component{
 
 
               <div className="form-group">
-                <button className="btn btn-danger btn-lg btn-block" disabled={this.state.isLoading || this.state.invalid}>Register</button>
+                <button className="btn btn-large btn-block" disabled={this.state.isLoading || this.state.invalid}>Register</button>
                 <hr/>
                 Already have an account? <NavLink activeClassName="active"  to="/login">Login here</NavLink>
               </div>

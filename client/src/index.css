@@ -32,7 +32,15 @@ body {
   text-align: center !important;
 }
 
-.login-register-icon{
+.login-register-icon {
   text-align: center;
   display: block;
+  font-size: 1em !important;
+}
+.login-register-icon>h1{
+  font-size: 2.28em !important;
+}
+h4 {
+    font-size: 1.4rem !important;
+    line-height: 90% !important;
 }

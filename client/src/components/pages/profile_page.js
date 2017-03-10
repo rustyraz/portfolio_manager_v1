@@ -8,7 +8,7 @@ class profilePage extends React.Component{
         <div className="row">
           {sidebarMenu}
           <div className="col-md-10 col-sm-12">
-            <div className="panel panel-default">
+            <div className="panel panel-default z-depth-4">
               <div className="panel-heading">
                 <h3 className="panel-titles">Profile details</h3></div>
               <div className="panel-body">
