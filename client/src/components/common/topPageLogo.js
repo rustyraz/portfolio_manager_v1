@@ -1,10 +1,15 @@
 import React from 'react';
 
 export default (
-  <h1 className="login-register-icon " aria-hidden="true">
-    <span className="glyphicon glyphicon-folder-open"></span>
-    <br/>
-    Work profile Manager
+  <div className="login-register-icon ">
+    <h1 aria-hidden="true">
+      <span className="glyphicon glyphicon-folder-open"></span>
+      <br/>
+      Work profile Manager
+
+    </h1>
+    <em>Generate an outstanding cv in simple steps</em>
     <p>&nbsp;</p>
-  </h1>
+  </div>
+
 );

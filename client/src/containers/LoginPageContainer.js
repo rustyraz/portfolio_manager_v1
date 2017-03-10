@@ -11,7 +11,7 @@ class LoginPage extends React.Component {
     const { addFlashMessage, loginActions } = this.props;
     return (
       <div className="row">
-        <div className="col-md-6 col-md-offset-3 col-sm-12">
+        <div className="col-md-4 col-md-offset-4 col-sm-12">
           {topPageLogo}
           <LoginForm loginActions={loginActions} addFlashMessage={addFlashMessage}/>
         </div>

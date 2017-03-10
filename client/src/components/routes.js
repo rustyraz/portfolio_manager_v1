@@ -10,15 +10,17 @@ import LoginPage from '../containers/LoginPageContainer';
 import RegisterPage from '../containers/RegisterPageContainer';
 import TemplatesPage from './pages/templates_page';
 
+import requireAuth from '../utils/requireAuth';
+
  export default (
-   <div className="col-sm-12 col-md-10">
+   <div>
      <Route exact path="/" component={HomePage} />
-     <Route path="/profile" component={ProfilePage} />
-     <Route path="/contacts" component={ContactsPage} />
-     <Route path="/experience" component={ExperiencePage} />
-     <Route path="/education" component={EducationPage} />
-     <Route path="/referees" component={RefereesPage} />
-     <Route path="/templates" component={TemplatesPage} />
+     <Route path="/profile" component={requireAuth(ProfilePage)} />
+     <Route path="/contacts" component={requireAuth(ContactsPage)} />
+     <Route path="/experience" component={requireAuth(ExperiencePage)} />
+     <Route path="/education" component={requireAuth(EducationPage)} />
+     <Route path="/referees" component={requireAuth(RefereesPage)} />
+     <Route path="/templates" component={requireAuth(TemplatesPage)} />
      <Route path='/register' component={RegisterPage} />
      <Route path="/login" component={LoginPage} />
    </div>

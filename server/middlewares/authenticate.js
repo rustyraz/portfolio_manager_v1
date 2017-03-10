@@ -17,8 +17,15 @@ export default (req, res, next) => {
         res.status(401).json({ error: "Invalid token provided" });
       }else{
         //find user id
+
+        // use the code below to avoid qurying the db on every authenticattion call
+        //req.userId = decoded.id;
+        //next();
+
+
+        //we can comment out this later for the need to use block user part
         User.query({
-          where: { id: decoded.id },
+          where: { id: decoded.id, activated: false },
           select: [ 'id', 'email' ]
         }).fetch().then(user => {
           if(!user){

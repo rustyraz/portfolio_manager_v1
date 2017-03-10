@@ -1,12 +1,11 @@
 import React from 'react';
-import sidebarMenu from '../common/sidebarMenu';
 
 class homePage extends React.Component{
   render(){
     return(
-      <div className="row">
-        {sidebarMenu}
-        <div className="col-md-10 col-sm-12">
+
+      <div >
+        <div className="col-md-12 col-sm-12">
           <div>
             <div className="jumbotron">
               <h1>Welcome to the Portfolio Manager</h1>
