@@ -1,0 +1,94 @@
+{
+  "profile" : {
+    "name": "Peter Ngerere",
+    "dateOfBirth": "July-1985",
+    "nationality": "Kenyan",
+    "maritalStatus": "Married",
+    "jobTitle": "Full Stack Web Developer",
+    "photo": "https://avatars3.githubusercontent.com/u/1265786?v=3&s=460",
+    "objective": "I am a full stack freelance web developer at upwork.  I have a 6 years experience in web app which I have developed through various intensive and demanding projects that have push me to gain in-depth knowledge in web application design, modeling , testing and debugging. I value good work and always ensure that my end product has accepted international standards that are of best value to my clients.  I have come a long way in a short time and I am always eager to learn and contribute my knowledge to a dynamic team or company. I believe in open source , sharing and being open to share my knowledge whenever needed. ",
+    "contacts":{
+      "phone": "+254724642551",
+      "email": "pngesh@gmail.com",
+      "website": "www/bluesoftwaresolns.com",
+      "github": "",
+      "facebook": "",
+      "linkedin" : "",
+      "twitter": ""
+    }
+  },
+  "experience":[
+    {
+      "fromMonth": "JAN",
+      "fromYeat": "2005",
+      "toMonth": "DEC",
+      "toYear": "2006",
+      "jobTitle": "Graphic Designer",
+      "companyName": "pro-photos Inc",
+      "roleDescription": "Edit photos and upload to the server"
+    }
+  ],
+  "education":[
+    {
+      "fromMonth": "JAN",
+      "fromYeat": "2004",
+      "toMonth": "DEC",
+      "toYear": "2004",
+      "archivement": "Certificate on Graphic Design",
+      "companyName": "Graphic Design College",
+      "roleDescription": "Specialized in graphic design"
+    },
+    {
+      "fromMonth": "JAN",
+      "fromYeat": "2007",
+      "toMonth": "DEC",
+      "toYear": "2010",
+      "archivement": "Degree in Computer Science",
+      "companyName": "Makerere University",
+      "roleDescription": "Specialized in computer programming and atained a second upper class"
+    }
+  ],
+  "professionalSkills":[
+    {
+      "title": "Nodejs",
+      "rating": "Expert"
+    },
+    {
+      "title": "Graphic Design",
+      "rating": "Intermediate"
+    }
+  ],
+  "languageSkills":[
+    {
+      "title": "English",
+      "rating": "Fluent"
+    },
+    {
+      "title": "Kiswahili",
+      "rating": "Fluent"
+    }
+  ],
+  "personalSkills":["Brain storming","Cracking Jokes","Mind reader"],
+  "awards":[
+    {
+      "title": "Best swimmer",
+      "year": "2011",
+      "description": "participated in the world's olympics"
+    }
+  ],
+  "hobbies":[
+    "swimming",
+    "movies",
+    "hiking"
+  ],
+  "referees":[
+    {
+      "name": "Bill Gates",
+      "email": "bill@microsoft.com",
+      "company": "Microsoft",
+      "title": "Owner"
+    }
+  ],
+  "publishDate": "20-01-2011",
+  "userId": "232423mdf2324"
+}

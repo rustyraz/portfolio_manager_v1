@@ -32,6 +32,7 @@ import index_routes from './routes/index';
 import users_routes from './routes/users';
 import auth_routes from './routes/auth';
 import profile_routes from './routes/profile';
+import templates_routes from './routes/templates';
 
 const PORT= process.env.PORT ? process.env.PORT : 3001;
 const API_PREFIX = "/api/";
@@ -43,6 +44,7 @@ app.use(API_PREFIX, index_routes);
 app.use(`${API_PREFIX}user`, users_routes);
 app.use(`${API_PREFIX}auth`,auth_routes);
 app.use(`${API_PREFIX}profile`,profile_routes);
+app.use(`${API_PREFIX}templates`,templates_routes);
 
 app.listen(PORT, () => {
   console.log('Api server running on port '+PORT);

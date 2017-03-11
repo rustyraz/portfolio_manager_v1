@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import authenticate from '../middlewares/authenticate';
-import user_profile from '../dummy_data/resume_sample';
 
 const router = Router();
 
@@ -15,9 +14,21 @@ router.post('/', authenticate, (req,res) => {
   });
 });
 
-router.get('/', authenticate, (req,res) => {
-  //we will query data from db
-  res.status(200).json(user_profile);
+router.get('/', /*authenticate,*/ (req,res) => {
+  res.status(200).json({
+    success: true,
+    error: false,
+    data: [
+      {
+        id: 1,
+        name: "sample_001"
+      },
+      {
+        id: 1,
+        name: "sample_002"
+      }
+    ]
+  });
 });
 
 export default router;

@@ -12,6 +12,7 @@ import App from './App';
 
 import jwt_decode from 'jwt-decode';
 import { setCurrentUser } from './actions/authActions';
+import { getUserProfile } from './actions/profileActions';
 
 const store = createStore(
   rootReducer,
@@ -26,6 +27,7 @@ if(localStorage.jwtToken){
   store.dispatch(setCurrentUser(jwt_decode(localStorage.jwtToken)));
 }
 
+store.dispatch(getUserProfile());
 
 ReactDOM.render(
   <Router>
